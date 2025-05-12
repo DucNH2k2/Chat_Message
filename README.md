@@ -10,46 +10,19 @@ node 18+
 ## Directory Structure
 
 ```
-/
-├── client/    # React + Vite + TypeScript
-│   ├── src/   # Main source code for client
-│   │   ├── app/
-│   │   ├── components/
-│   │   ├── features/
-│   │   ├── hooks/
-│   │   ├── models/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   ├── main.css
-│   │   ├── main.tsx
-│   │   └── vite-env.d.ts
-│   ├── .env
-│   ├── .gitignore
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── tsconfig.app.json
-│   └── vite.config.ts
-│
-└── server/    # Express + Socket.io + MongoDB + Redis
-    ├── src/   # Main source code for server
-    │   ├── config/
-    │   ├── Controllers/
-    │   ├── Middlewares/
-    │   ├── Models/
-    │   ├── Repositories/
-    │   ├── Routes/
-    │   ├── Services/
-    │   ├── types/
-    │   └── app.ts
-    ├── .env
-    ├── firebase.json   # Firebase credentials configuration
-    ├── server.ts       # Main server entry file
-    ├── package.json
-    ├── tsconfig.json
-    ├── .dockerignore
-    └── .gitignore
+- `client/` – React + Vite + TypeScript
+  - `src/`
+    - `app/`
+    - `components/`
+    - ...
+  - `.env`, `vite.config.ts`, `tsconfig.json`, etc.
 
+- `server/` – Express + MongoDB + Redis + Socket.io
+  - `src/`
+    - `Controllers/`
+    - `Models/`
+    - ...
+  - `server.ts`, `.env`, `firebase.json`
 
 
 ## ⚙️ Setup & Run the Project
