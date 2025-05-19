@@ -2,6 +2,7 @@ import { Document, model, Schema } from "mongoose";
 import { ProviderAccount } from "../Utils/auth";
 
 export interface IAccount extends Document {
+    avatarUrl?: string;
     name: String;
     phoneNumber?: string;
     password?: string;
@@ -12,6 +13,9 @@ export interface IAccount extends Document {
 }
 
 const accountSchema = new Schema<IAccount>({
+    avatarUrl: {
+        type: String,
+    },
     name: {
         type: String,
         required: true
@@ -36,12 +40,12 @@ const accountSchema = new Schema<IAccount>({
     },
     provider: {
         type: String,
-        enum: ProviderAccount,
+        enum: Object.values(ProviderAccount),
         required: true
     },
     createAt: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     }
 });
 
