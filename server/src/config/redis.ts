@@ -1,7 +1,5 @@
 import { createClient } from "redis";
 
-const { REDIS_PORT, REDIS_HOST, REDIS_PASSWORD } = process.env;
-
 export const redisClient = createClient({
     socket: {
         port: Number(process.env.REDIS_PORT) || 6379,

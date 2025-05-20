@@ -1,4 +1,5 @@
 class Account {
+    _id: string = "";
     name: string = "";
     email?: string = "";
     phoneNumber?: string;

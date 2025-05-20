@@ -1,3 +1,4 @@
+import { FilterQuery } from "mongoose";
 import { AccountModel, IAccount } from "../Models/account.model"
 
 const findById = (id: string) => {
@@ -20,4 +21,8 @@ const saveAccount = (newAccount: Partial<IAccount>) => {
     return account;
 }
 
-export default { findByAuthId, findByPhoneNumber, saveAccount, findById }
+const findMany = (condition: FilterQuery<IAccount>) => {
+  return AccountModel.find(condition);
+};
+
+export default { findByAuthId, findByPhoneNumber, saveAccount, findById, findMany }

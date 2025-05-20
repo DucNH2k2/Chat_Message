@@ -3,7 +3,7 @@ import { ProviderAccount } from "../Utils/auth";
 
 export interface IAccount extends Document {
     avatarUrl?: string;
-    name: String;
+    name: string;
     phoneNumber?: string;
     password?: string;
     authId?: string;

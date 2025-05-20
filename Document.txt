@@ -1,0 +1,49 @@
+When user login or re-connect: Connect Socket (client, server) -> Save state connect (server) -> check message (server) -> push message not to client (server);
+When user push message: Push message to server (client) -> check state account (server) -> push message (if account online)
+                                                                                        -> save message to db -> push message after account online 
+
+
+Luồng send message cơ bản:
+1. Gửi message từ client xuống server
+2. Lưu vào db với status là đã Gửi
+3. Gửi message vừa nhận từ client đến tất cả các thiết của account đó đang đăng nhập và gửi đến tất cả các thiết bị mà người nhận đăng đăng nhập
+4. Client của account nhận message sẽ nhập vào gửi status đã nhận về server
+5. update status message đó là đã nhận
+6. Nếu account nhận đang mở hoặc sau khi mở sẽ update status cho message thành đã xem
+
+
+
+Những thứ mà message người dùng cần:
+status: đã gửi, đã nhận, đã xem
+thời gian gửi message
+Các tin nhắn chưa được đọc
+message: gửi message text, file, folder, cuộc gọi đến, cuộc gọi nhỡ
+Tải ảnh folder, file
+Tổng hợp các ảnh, file, share link
+Thông báo thành viên join group hoặc member được cấp thêm quyền nếu room đó là group
+
+
+
+
+Hãy giúp tôi thiết kế db giống telegram mà tối ưu đám ứng các tính năng sau: 
+1. cho phép chat 1-1 hoặc group nhiều user khác nhau
+2. Cho phép đặt tên dễ nhớ cho user hoặc group user đó đang chat
+3. Lấy danh sách chat mà user đó đang chat (1-1, group) với các thông tin:
+    + Số lượng message chưa đọc
+    + Message cuối cùng của chat (không bao gốm các message system)
+    + Thông tin của chat nếu là 1-1 và nếu có đặt tên dễ nhớ thì lấy tên dễ nhớ ra
+    + Danh sách chat xắp sếp theo thời gian chat của message cuối cùng
+4. Cho phép gửi file, ảnh, emoji, text. Đặt biệt là text cho phép tag thêm user khác nếu đang chat 1-1. Và các thành viên trong group có đặt tên dễ nhớ có các user được tag thì sẽ hiển thị tên dễ nhớ chứ không phải tên của user được tag (tượng tự hiện message cuối cùng ở danh sách chat)
+5. Có thể xác định được message nào đã được nhận (với chat 1-1), đã được đọc
+6. Nếu là chat group thêm các thông báo như đổi tên nhóm, thành viên gia nhập (xác định ai là người thêm nếu có), thành viên rời nhóm
+7. chat 1-1 thì có thể nhìn thấy được thười điểm cuối mà người dùng đó online, khi chat group thì có thể nhìn thấy được số thành viên trong group
+8. cho phép tắt thông báo với 1 số chat
+9. Cho phép search giống telegram ở input trên danh sách chat nhưng giới hạn lại tính năng: 
+    + search message của user đó trong tất cả các đoạn chat
+    + Search contact của user hoặc group mà user đó đang chat nếu đã đặt tên dễ nhớ thì chỉ search theo tên dễ nhớ này thôi.
+    + Chỉ cho phép tìm kiếm chưa chat bao với email hoặc số điện thoại
+
+Và 1 số sử lý khó là:
+    + Khi chat trong 1 group mà 1 người khác chat và tag 1 user mà mình đã đặt tên dễ nhớ rồi thì khi push message đó từ server lên client của mình thì làm như nào để có thể hiển thị đúng tên dễ nhớ mà mình đã đặt
+
+Sử dụng Express + MonogoDB + Redis + Socket.io + ReactJS

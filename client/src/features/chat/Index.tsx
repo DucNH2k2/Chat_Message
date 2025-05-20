@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { AxiosError, AxiosRequestConfig, HttpStatusCode } from "axios";
 import { useLayoutEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 import axiosInstance from "~/services/axiosInstance";
 import { ACCESS_TOKEN, AUTH_PROVIDER, handleRefreshToken, ProviderAccount } from "~/utils/auth";
 import { getCurrentAccountAction } from "./chatSaga";
 import { useDispatch } from "react-redux";
+import Chat from "./Chat";
 
 const Index = () => {
     const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const Index = () => {
         dispatch(getCurrentAccountAction());
     }, []);
 
-    return <Outlet />;
+    return <Chat />;
 }
 
 export default Index;
